@@ -78,7 +78,7 @@
               <param name="formula">Invalid formula to be tested</param>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenValid_Valid(System.String)">
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstToken_Valid(System.String)">
             <summary>
               <para>
                 Makes sure that a formula with a valid first token passes the constructor
@@ -86,12 +86,44 @@
               <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenNumberInvalid_Invalid(System.String)">
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenNumber_Invalid(System.String)">
             <summary>
               <para>
-                Makes sure that a formula with a valid first token passes the constructor
+                Makes sure that a formula with an invalid first token throws a FormulaFormatException.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestLastToken_Valid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid last token passes the constructor.
               </para>
               <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestLastToken_Invalid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with an invalid last token throws a FormulaFormatException.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestParenthesesFollowingToken_Valid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid token following '(' passes the constructor.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestParenthesesFollowingToken_Invalid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with an invalid token following '(' throws a FormulaFormatException.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
             </summary>
         </member>
     </members>

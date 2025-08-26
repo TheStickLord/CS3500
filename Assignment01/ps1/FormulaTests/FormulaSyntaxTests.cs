@@ -196,7 +196,7 @@ public class FormulaSyntaxTests
     [DataRow("0")]
     [DataRow("AB1")]
     [DataRow("(1)")]
-    public void FormulaConstructor_TestFirstTokenValid_Valid(string formula)
+    public void FormulaConstructor_TestFirstToken_Valid(string formula)
     {
         _ = new Formula(formula);
     }
@@ -213,7 +213,7 @@ public class FormulaSyntaxTests
     [DataRow("*1")]
     [DataRow("/1")]
     [DataRow(")")]
-    public void FormulaConstructor_TestFirstTokenNumberInvalid_Invalid(string formula)
+    public void FormulaConstructor_TestFirstTokenNumber_Invalid(string formula)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
             () => _ = new Formula(formula));
@@ -221,7 +221,101 @@ public class FormulaSyntaxTests
 
     // --- Tests for  Last Token Rule ---
 
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with a valid last token passes the constructor.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("(1)")]
+    [DataRow("1+1")]
+    [DataRow("1+AB1")]
+    public void FormulaConstructor_TestLastToken_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with an invalid last token throws a FormulaFormatException.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1(")]
+    [DataRow("1+")]
+    [DataRow("1*")]
+    [DataRow("1-")]
+    [DataRow("1/")]
+    public void FormulaConstructor_TestLastToken_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
+
     // --- Tests for Parentheses/Operator Following Rule ---
 
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with a valid token following '(' passes the constructor.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("(1)")]
+    [DataRow("(AB1)")]
+    [DataRow("((1))")]
+    public void FormulaConstructor_TestParenthesesFollowingToken_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with an invalid token following '(' throws a FormulaFormatException.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("(+1)")]
+    [DataRow("(*1)")]
+    [DataRow("(-1)")]
+    [DataRow("(/1)")]
+    [DataRow("())")]
+    public void FormulaConstructor_TestParenthesesFollowingToken_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
+
     // --- Tests for Extra Following Rule ---
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with a valid token following any number/variable/')' passes the constructor.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("")]
+    public void FormulaConstructor_TestExtraFollowingToken_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with an invalid token following any number/variable/')' throws a FormulaFormatException.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("")]
+    public void FormulaConstructor_TestExtraFollowingToken_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
+
 }
