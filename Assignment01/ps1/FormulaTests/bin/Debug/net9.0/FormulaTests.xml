@@ -31,16 +31,67 @@
               </para>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenNumber_Valid">
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestSingleInvalidToken_Invalid(System.String)">
             <summary>
               <para>
-                Make sure a simple well formed formula is accepted by the constructor (the constructor
-                should not throw an exception).
+                This test makes sure the right kind of exception is thrown
+                when trying to create a formula with no invalid tokens.
+              </para>
+              <param name="token">Invalid token to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestValidTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when a valid character(s) are presented.
               </para>
               <remarks>
-                This is an example of a test that is not expected to throw an exception.
-                In other words, the formula "1+1" has a valid first token (and is otherwise also correct).
+                I tried to maintain simple and valid syntax when testing for +, -, /, *, (, and ) validity to ensure that the formulas would not trigger other rules.
               </remarks>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestGreaterClosingAmount_Invalid(System.String)">
+            <summary>
+              <para>
+                This test makes sure an exception is thrown when there are more closing paranthesis than opening paranthesis.
+              </para>
+              <remarks>
+                I have tried to keep the formulas as syntatically correct as possible
+              </remarks>
+              <param name="formula">Inavlid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestBalancedParanthesis_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when a balenced paratheses formula is passed.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestUnbalancedParanthesis_Invalid(System.String)">
+            <summary>
+              <para>
+                This test makes sure an exception is thrown when a non-balenced paratheses formula is passed.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenValid_Valid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid first token passes the constructor
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenNumberInvalid_Invalid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid first token passes the constructor
+              </para>
+              <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
     </members>

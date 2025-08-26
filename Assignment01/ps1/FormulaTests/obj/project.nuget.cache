@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "duZUxIy4Nl8=",
+  "dgSpecHash": "sjR3nxgDOLI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\FormulaTests\\FormulaTests.csproj",
+  "projectFilePath": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\CS3500\\Assignment01\\ps1\\FormulaTests\\FormulaTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rgsch\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\rgsch\\.nuget\\packages\\microsoft.applicationinsights\\2.23.0\\microsoft.applicationinsights.2.23.0.nupkg.sha512",

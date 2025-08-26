@@ -8,6 +8,7 @@ namespace CS3500.FormulaTests;
 
 using System.Security.Cryptography;
 using CS3500.Formula1; // Change this using statement to use different formula implementations.
+using Newtonsoft.Json.Linq;
 
 /// <summary>
 ///   <para>
@@ -49,28 +50,173 @@ public class FormulaSyntaxTests
 
     // --- Tests for Valid Token Rule ---
 
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure the right kind of exception is thrown
+    ///     when trying to create a formula with no invalid tokens.
+    ///   </para>
+    ///   <param name="token">Invalid token to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("%")]
+    [DataRow("=")]
+    [DataRow("^")]
+    [DataRow("{")]
+    [DataRow("}")]
+    [DataRow("[")]
+    [DataRow("]")]
+    [DataRow("<")]
+    [DataRow(">")]
+    [DataRow("!")]
+    [DataRow("?")]
+    [DataRow(":")]
+    [DataRow(";")]
+    [DataRow(",")]
+    [DataRow(".")]
+    [DataRow("\"")]
+    [DataRow("'")]
+    [DataRow("`")]
+    [DataRow("~")]
+    [DataRow("|")]
+    [DataRow("\\")]
+    [DataRow("&")]
+    [DataRow("#")]
+    [DataRow("$")]
+    [DataRow("@")]
+    [DataRow("_")]
+    [DataRow("1a")]
+    [DataRow("a")]
+    [DataRow("ab")]
+    public void FormulaConstructor_TestSingleInvalidToken_Invalid(string token)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(token));
+    }
 
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when a valid character(s) are presented.
+    ///   </para>
+    ///   <remarks>
+    ///     I tried to maintain simple and valid syntax when testing for +, -, /, *, (, and ) validity to ensure that the formulas would not trigger other rules.
+    ///   </remarks>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1")]
+    [DataRow("2")]
+    [DataRow("3")]
+    [DataRow("4")]
+    [DataRow("5")]
+    [DataRow("6")]
+    [DataRow("7")]
+    [DataRow("8")]
+    [DataRow("9")]
+    [DataRow("0")]
+    [DataRow("(1)")]
+    [DataRow("1+1")]
+    [DataRow("1/1")]
+    [DataRow("1*1")]
+    [DataRow("1-1")]
+    [DataRow("AB1")]
+    [DataRow("Ab1")]
+    [DataRow("aB1")]
+    [DataRow("ab1")]
+    [DataRow("A10")]
+    public void FormulaConstructor_TestValidTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
 
     // --- Tests for Closing Parenthesis Rule
 
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure an exception is thrown when there are more closing paranthesis than opening paranthesis.
+    ///   </para>
+    ///   <remarks>
+    ///     I have tried to keep the formulas as syntatically correct as possible
+    ///   </remarks>
+    ///   <param name="formula">Inavlid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow(")")]
+    [DataRow("1)")]
+    [DataRow("(1))")]
+    [DataRow("((1)))")]
+    public void FormulaConstructor_TestGreaterClosingAmount_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
+
     // --- Tests for Balanced Parentheses Rule
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when a balenced paratheses formula is passed.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("(1)")]
+    [DataRow("((1))")]
+    [DataRow("(((1)))")]
+    public void FormulaConstructor_TestBalancedParanthesis_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure an exception is thrown when a non-balenced paratheses formula is passed.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("((1)")]
+    [DataRow("(1))")]
+    [DataRow("((((1)))")]
+    public void FormulaConstructor_TestUnbalancedParanthesis_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
 
     // --- Tests for First Token Rule
 
     /// <summary>
     ///   <para>
-    ///     Make sure a simple well formed formula is accepted by the constructor (the constructor
-    ///     should not throw an exception).
+    ///     Makes sure that a formula with a valid first token passes the constructor
     ///   </para>
-    ///   <remarks>
-    ///     This is an example of a test that is not expected to throw an exception.
-    ///     In other words, the formula "1+1" has a valid first token (and is otherwise also correct).
-    ///   </remarks>
+    ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    public void FormulaConstructor_TestFirstTokenNumber_Valid( )
+    [DataRow("1")]
+    [DataRow("0")]
+    [DataRow("AB1")]
+    [DataRow("(1)")]
+    public void FormulaConstructor_TestFirstTokenValid_Valid(string formula)
     {
-        _ = new Formula( "1+1" );
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with an invalid first token throws a FormulaFormatException.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("+1")]
+    [DataRow("-1")]
+    [DataRow("*1")]
+    [DataRow("/1")]
+    [DataRow(")")]
+    public void FormulaConstructor_TestFirstTokenNumberInvalid_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
     }
 
     // --- Tests for  Last Token Rule ---
