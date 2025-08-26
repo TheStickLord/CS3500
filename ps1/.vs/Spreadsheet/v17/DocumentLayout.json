@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rgsch\\Downloads\\ps1\\",
+  "WorkspaceRootPath": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|c:\\users\\rgsch\\downloads\\ps1\\formulatests\\stylecop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|solutionrelative:formulatests\\stylecop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|c:\\users\\rgsch\\downloads\\ps1\\formulatests\\formulasyntaxtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|c:\\users\\rgsch\\onedrive\\documents\\github\\3500-assignment-1\\ps1\\formulatests\\formulasyntaxtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|solutionrelative:formulatests\\formulasyntaxtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|c:\\users\\rgsch\\downloads\\ps1\\formulatests\\formula.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|solutionrelative:formulatests\\formula.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|c:\\users\\rgsch\\onedrive\\documents\\github\\3500-assignment-1\\ps1\\formulatests\\stylecop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{854780F6-9076-4484-B151-0A247B1DF7AD}|FormulaTests\\FormulaTests.csproj|solutionrelative:formulatests\\stylecop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,15 +18,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "stylecop.json",
-              "DocumentMoniker": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\stylecop.json",
+              "DocumentMoniker": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\FormulaTests\\stylecop.json",
               "RelativeDocumentMoniker": "FormulaTests\\stylecop.json",
-              "ToolTip": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\stylecop.json",
+              "ToolTip": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\FormulaTests\\stylecop.json",
               "RelativeToolTip": "FormulaTests\\stylecop.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -39,27 +35,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FormulaSyntaxTests.cs",
-              "DocumentMoniker": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
+              "DocumentMoniker": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
               "RelativeDocumentMoniker": "FormulaTests\\FormulaSyntaxTests.cs",
-              "ToolTip": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
+              "ToolTip": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\3500-Assignment-1\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
               "RelativeToolTip": "FormulaTests\\FormulaSyntaxTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwCoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-26T15:27:19.087Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Formula.dll",
-              "DocumentMoniker": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\Formula.dll",
-              "RelativeDocumentMoniker": "FormulaTests\\Formula.dll",
-              "ToolTip": "C:\\Users\\rgsch\\Downloads\\ps1\\FormulaTests\\Formula.dll",
-              "RelativeToolTip": "FormulaTests\\Formula.dll",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001697|",
-              "WhenOpened": "2025-08-26T15:27:18.869Z"
             }
           ]
         }

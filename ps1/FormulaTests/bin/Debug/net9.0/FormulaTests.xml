@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FormulaTests</name>
+    </assembly>
+    <members>
+        <member name="T:CS3500.FormulaTests.FormulaSyntaxTests">
+            <summary>
+              <para>
+                The following class shows the basics of how to use the MSTest framework,
+                including:
+              </para>
+              <list type="number">
+                <item> How to catch exceptions. </item>
+                <item> How a test of valid code should look. </item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestNoTokens_Invalid">
+            <summary>
+              <para>
+                This test makes sure the right kind of exception is thrown
+                when trying to create a formula with no tokens.
+              </para>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestNumericToken_Valid">
+            <summary>
+              <para>
+                Tests whether a valid numeric character will pass in the constructor
+              </para>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstTokenNumber_Valid">
+            <summary>
+              <para>
+                Make sure a simple well formed formula is accepted by the constructor (the constructor
+                should not throw an exception).
+              </para>
+              <remarks>
+                This is an example of a test that is not expected to throw an exception.
+                In other words, the formula "1+1" has a valid first token (and is otherwise also correct).
+              </remarks>
+            </summary>
+        </member>
+    </members>
+</doc>
