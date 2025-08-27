@@ -24,13 +24,6 @@
               </para>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestNumericToken_Valid">
-            <summary>
-              <para>
-                Tests whether a valid numeric character will pass in the constructor
-              </para>
-            </summary>
-        </member>
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestSingleInvalidToken_Invalid(System.String)">
             <summary>
               <para>
@@ -122,6 +115,22 @@
             <summary>
               <para>
                 Makes sure that a formula with an invalid token following '(' throws a FormulaFormatException.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestOperatorFollowingToken_Valid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid token following an operator passes the constructor.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestOperatorFollowingToken_Invalid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with an invalid token following an operator throws a FormulaFormatException.
               </para>
               <param name="formula">Invalid formula to be tested</param>
             </summary>

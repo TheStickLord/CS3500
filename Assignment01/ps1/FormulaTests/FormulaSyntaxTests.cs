@@ -37,17 +37,6 @@ public class FormulaSyntaxTests
         Assert.ThrowsExactly<FormulaFormatException>( ( ) => _ = new Formula( string.Empty ) );
     }
 
-    /// <summary>
-    ///   <para>
-    ///     Tests whether a valid numeric character will pass in the constructor
-    ///   </para>
-    /// </summary>
-    [TestMethod]
-    public void FormulaConstructor_TestNumericToken_Valid()
-    {
-        _ = new Formula("1");
-    }
-
     // --- Tests for Valid Token Rule ---
 
     /// <summary>
@@ -285,6 +274,48 @@ public class FormulaSyntaxTests
     [DataRow("(/1)")]
     [DataRow("())")]
     public void FormulaConstructor_TestParenthesesFollowingToken_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+            () => _ = new Formula(formula));
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with a valid token following an operator passes the constructor.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1+1")]
+    [DataRow("1+AB1")]
+    [DataRow("1+(1)")]
+    [DataRow("1-1")]
+    [DataRow("1-AB1")]
+    [DataRow("1-(1)")]
+    [DataRow("1*1")]
+    [DataRow("1*AB1")]
+    [DataRow("1*(1)")]
+    [DataRow("1/1")]
+    [DataRow("1/AB1")]
+    [DataRow("1/(1)")]
+    public void FormulaConstructor_TestOperatorFollowingToken_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     Makes sure that a formula with an invalid token following an operator throws a FormulaFormatException.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1++1")]
+    [DataRow("1**1")]
+    [DataRow("1//1")]
+    [DataRow("1--1")]
+    [DataRow("(1-)")]
+    public void FormulaConstructor_TestOperatorFollowingToken_Invalid(string formula)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
             () => _ = new Formula(formula));
