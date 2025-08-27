@@ -126,5 +126,21 @@
               <param name="formula">Invalid formula to be tested</param>
             </summary>
         </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestExtraFollowingToken_Valid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with a valid token following any number/variable/')' passes the constructor.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestExtraFollowingToken_Invalid(System.String)">
+            <summary>
+              <para>
+                Makes sure that a formula with an invalid token following any number/variable/')' throws a FormulaFormatException.
+              </para>
+              <param name="formula">Invalid formula to be tested</param>
+            </summary>
+        </member>
     </members>
 </doc>

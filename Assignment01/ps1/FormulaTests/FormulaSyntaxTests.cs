@@ -7,7 +7,7 @@
 namespace CS3500.FormulaTests;
 
 using System.Security.Cryptography;
-using CS3500.Formula1; // Change this using statement to use different formula implementations.
+using CS3500.Formula2; // Change this using statement to use different formula implementations. (1-3)
 using Newtonsoft.Json.Linq;
 
 /// <summary>
@@ -77,6 +77,7 @@ public class FormulaSyntaxTests
     [DataRow("'")]
     [DataRow("`")]
     [DataRow("~")]
+    [DataRow(" ")]
     [DataRow("|")]
     [DataRow("\\")]
     [DataRow("&")]
@@ -298,7 +299,14 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    [DataRow("")]
+    [DataRow("(1)+1")]
+    [DataRow("(1)-1")]
+    [DataRow("(1)/1")]
+    [DataRow("(1)*1")]
+    [DataRow("AB1+1")]
+    [DataRow("AB1-1")]
+    [DataRow("AB1/1")]
+    [DataRow("AB1*1")]
     public void FormulaConstructor_TestExtraFollowingToken_Valid(string formula)
     {
         _ = new Formula(formula);
@@ -311,7 +319,9 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Invalid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    [DataRow("")]
+    [DataRow("(1)(2)")]
+    [DataRow("(1)2")]
+    [DataRow("(1)AB1")]
     public void FormulaConstructor_TestExtraFollowingToken_Invalid(string formula)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
