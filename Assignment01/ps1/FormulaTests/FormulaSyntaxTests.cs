@@ -97,6 +97,7 @@ public class FormulaSyntaxTests
     [DataRow("8")]
     [DataRow("9")]
     [DataRow("0")]
+    [DataRow("000")]
     [DataRow("10")]
     [DataRow("010")]
     public void FormulaConstructor_TestNumericTokens_Valid(string formula)
@@ -130,9 +131,13 @@ public class FormulaSyntaxTests
     /// </summary>
     [TestMethod]
     [DataRow("1.1")]
+    [DataRow("1.111")]
     [DataRow("1.0")]
+    [DataRow("100.0")]
+    [DataRow("010.0")]
     [DataRow("0.1")]
     [DataRow("0.0")]
+    [DataRow("000.000")]
     public void FormulaConstructor_TestFloatTokens_Valid(string formula)
     {
         _ = new Formula(formula);
@@ -142,6 +147,9 @@ public class FormulaSyntaxTests
     ///   <para>
     ///     This test makes sure no exception is thrown when valid operator/parenthesis tokens are presented.
     ///   </para>
+    ///   <remarks>
+    ///     Due to the requirements of other rules, I tried to maintan simple syntax to avoid triggering other rules while also testing for just valid operator characters.
+    ///   </remarks>
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
@@ -182,6 +190,9 @@ public class FormulaSyntaxTests
     [DataRow("1a")]
     [DataRow("a")]
     [DataRow("ab")]
+    [DataRow("1A")]
+    [DataRow("A")]
+    [DataRow("AB")]
     public void FormulaConstructor_TestVariableTokens_Invalid(string formula)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
