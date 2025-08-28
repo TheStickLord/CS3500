@@ -6,6 +6,7 @@
 
 namespace CS3500.FormulaTests;
 
+using System.Data;
 using System.Security.Cryptography;
 using CS3500.Formula2; // Change this using statement to use different formula implementations. (1-3)
 using Newtonsoft.Json.Linq;
@@ -41,8 +42,7 @@ public class FormulaSyntaxTests
 
     /// <summary>
     ///   <para>
-    ///     This test makes sure the right kind of exception is thrown
-    ///     when trying to create a formula with no invalid tokens.
+    ///     This test makes sure an exception is thrown when any invalid single character tokens are presented.
     ///   </para>
     ///   <param name="token">Invalid token to be tested</param>
     /// </summary>
@@ -74,9 +74,6 @@ public class FormulaSyntaxTests
     [DataRow("$")]
     [DataRow("@")]
     [DataRow("_")]
-    [DataRow("1a")]
-    [DataRow("a")]
-    [DataRow("ab")]
     public void FormulaConstructor_TestSingleInvalidToken_Invalid(string token)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
@@ -85,11 +82,8 @@ public class FormulaSyntaxTests
 
     /// <summary>
     ///   <para>
-    ///     This test makes sure no exception is thrown when a valid character(s) are presented.
+    ///     This test makes sure no exception is thrown when valid numeric tokens are presented.
     ///   </para>
-    ///   <remarks>
-    ///     I tried to maintain simple and valid syntax when testing for +, -, /, *, (, and ) validity to ensure that the formulas would not trigger other rules.
-    ///   </remarks>
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
@@ -103,19 +97,95 @@ public class FormulaSyntaxTests
     [DataRow("8")]
     [DataRow("9")]
     [DataRow("0")]
+    [DataRow("10")]
+    [DataRow("010")]
+    public void FormulaConstructor_TestNumericTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when valid exponential tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1e1")]
+    [DataRow("1e0")]
+    [DataRow("1e-1")]
+    [DataRow("3.5e10")]
+    [DataRow("0e0")]
+    [DataRow("0e3")]
+    public void FormulaConstructor_TestExponentialTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when valid float tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1.1")]
+    [DataRow("1.0")]
+    [DataRow("0.1")]
+    [DataRow("0.0")]
+    public void FormulaConstructor_TestFloatTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when valid operator/parenthesis tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
     [DataRow("(1)")]
     [DataRow("1+1")]
     [DataRow("1/1")]
     [DataRow("1*1")]
     [DataRow("1-1")]
+    public void FormulaConstructor_TestOperatorsAndParenthesisTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when valid variable tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
     [DataRow("AB1")]
     [DataRow("Ab1")]
     [DataRow("aB1")]
     [DataRow("ab1")]
     [DataRow("A10")]
-    public void FormulaConstructor_TestValidTokens_Valid(string formula)
+    public void FormulaConstructor_TestVariableTokens_Valid(string formula)
     {
         _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure an exception is thrown when invalid variable tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Invalid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1a")]
+    [DataRow("a")]
+    [DataRow("ab")]
+    public void FormulaConstructor_TestVariableTokens_Invalid(string formula)
+    {
+        Assert.ThrowsExactly<FormulaFormatException>(
+           () => _ = new Formula(formula));
     }
 
     // --- Tests for Closing Parenthesis Rule
@@ -218,7 +288,7 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    [DataRow("(1)")]
+    [DataRow("(1+AB1)")]
     [DataRow("1+1")]
     [DataRow("1+AB1")]
     public void FormulaConstructor_TestLastToken_Valid(string formula)
@@ -253,7 +323,7 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    [DataRow("(1)")]
+    // [DataRow("(1)")] Redundant Test
     [DataRow("(AB1)")]
     [DataRow("((1))")]
     public void FormulaConstructor_TestParenthesesFollowingToken_Valid(string formula)
@@ -330,6 +400,10 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
+    [DataRow("1+1")]
+    [DataRow("1*1")]
+    [DataRow("1/1")]
+    [DataRow("1-1")]
     [DataRow("(1)+1")]
     [DataRow("(1)-1")]
     [DataRow("(1)/1")]

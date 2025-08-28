@@ -33,14 +33,51 @@
               <param name="token">Invalid token to be tested</param>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestValidTokens_Valid(System.String)">
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestNumericTokens_Valid(System.String)">
             <summary>
               <para>
-                This test makes sure no exception is thrown when a valid character(s) are presented.
+                This test makes sure no exception is thrown when valid numeric tokens are presented.
               </para>
-              <remarks>
-                I tried to maintain simple and valid syntax when testing for +, -, /, *, (, and ) validity to ensure that the formulas would not trigger other rules.
-              </remarks>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestExponentialTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when valid exponential tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFloatTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when valid float tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestOperatorsAndParenthesisTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when valid operator/parenthesis tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestVariableTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when valid variable tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestVariableTokens_Invalid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when invalid variable tokens are presented.
+              </para>
               <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
