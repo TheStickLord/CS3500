@@ -17,9 +17,32 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 218,
+          "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 182,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormulaSyntaxTests.cs",
+              "DocumentMoniker": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\CS3500\\Assignment01\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
+              "RelativeDocumentMoniker": "FormulaTests\\FormulaSyntaxTests.cs",
+              "ToolTip": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\CS3500\\Assignment01\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
+              "RelativeToolTip": "FormulaTests\\FormulaSyntaxTests.cs",
+              "ViewState": "AgIAAOMBAAAAAAAAAAAuwAACAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T15:27:19.087Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -31,19 +54,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-08-26T15:27:21.288Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormulaSyntaxTests.cs",
-              "DocumentMoniker": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\CS3500\\Assignment01\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
-              "RelativeDocumentMoniker": "FormulaTests\\FormulaSyntaxTests.cs",
-              "ToolTip": "C:\\Users\\rgsch\\OneDrive\\Documents\\GitHub\\CS3500\\Assignment01\\ps1\\FormulaTests\\FormulaSyntaxTests.cs",
-              "RelativeToolTip": "FormulaTests\\FormulaSyntaxTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALwBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T15:27:19.087Z",
-              "EditorCaption": ""
             }
           ]
         }

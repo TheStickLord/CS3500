@@ -8,7 +8,7 @@ namespace CS3500.FormulaTests;
 
 using System.Data;
 using System.Security.Cryptography;
-using CS3500.Formula2; // Change this using statement to use different formula implementations. (1-3)
+using CS3500.Formula3; // Change this using statement to use different formula implementations. (1-3)
 using Newtonsoft.Json.Linq;
 
 /// <summary>
@@ -66,7 +66,6 @@ public class FormulaSyntaxTests
     [DataRow("'")]
     [DataRow("`")]
     [DataRow("~")]
-    [DataRow(" ")]
     [DataRow("|")]
     [DataRow("\\")]
     [DataRow("&")]
@@ -125,6 +124,27 @@ public class FormulaSyntaxTests
 
     /// <summary>
     ///   <para>
+    ///     This test makes sure no exception is thrown when valid exponential tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    ///   <remarks>
+    ///     This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+    ///   </remarks>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1e1 + 1e1")]
+    [DataRow("1e0 + 1e0")]
+    [DataRow("1e-1 + 1e-1")]
+    [DataRow("3.5e10 + 3.5e10")]
+    [DataRow("0e0 + 0e0")]
+    [DataRow("0e3 + 0e3")]
+    public void FormulaConstructor_TestMultipleExponentialTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
     ///     This test makes sure no exception is thrown when valid float tokens are presented.
     ///   </para>
     ///   <param name="formula">Valid formula to be tested</param>
@@ -139,6 +159,29 @@ public class FormulaSyntaxTests
     [DataRow("0.0")]
     [DataRow("000.000")]
     public void FormulaConstructor_TestFloatTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when multiple valid float tokens are presented.
+    ///   </para>
+    ///   <remarks>
+    ///     This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+    ///   </remarks>
+    ///   <param name="formula">Valid formula to be tested</param>
+    /// </summary>
+    [TestMethod]
+    [DataRow("1.1 + 1.1")]
+    [DataRow("1.111 + 1.111")]
+    [DataRow("1.0 + 1.0")]
+    [DataRow("100.0 + 100.0")]
+    [DataRow("010.0 + 010.0")]
+    [DataRow("0.1 + 0.1")]
+    [DataRow("0.0 + 0.0")]
+    [DataRow("000.000 + 000.000")]
+    public void FormulaConstructor_TestMultipleFloatTokens_Valid(string formula)
     {
         _ = new Formula(formula);
     }
@@ -199,6 +242,26 @@ public class FormulaSyntaxTests
            () => _ = new Formula(formula));
     }
 
+    /// <summary>
+    ///   <para>
+    ///     This test makes sure no exception is thrown when mulitple valid variable tokens are presented.
+    ///   </para>
+    ///   <param name="formula">Valid formula to be tested</param>
+    ///   <remarks>
+    ///     This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+    ///   </remarks>
+    /// </summary>
+    [TestMethod]
+    [DataRow("AB1 + AB1")]
+    [DataRow("Ab1 + Ab1")]
+    [DataRow("aB1 + aB1")]
+    [DataRow("ab1 + ab1")]
+    [DataRow("A10 + A10")]
+    public void FormulaConstructor_TestMultipleVariableTokens_Valid(string formula)
+    {
+        _ = new Formula(formula);
+    }
+
     // --- Tests for Closing Parenthesis Rule
 
     /// <summary>
@@ -215,7 +278,7 @@ public class FormulaSyntaxTests
     [DataRow("1)")]
     [DataRow("(1))")]
     [DataRow("((1)))")]
-    public void FormulaConstructor_TestGreaterClosingAmount_Invalid(string formula)
+    public void FormulaConstructor_TestGreaterClosingParanthesisAmount_Invalid(string formula)
     {
         Assert.ThrowsExactly<FormulaFormatException>(
             () => _ = new Formula(formula));
@@ -232,7 +295,10 @@ public class FormulaSyntaxTests
     [TestMethod]
     [DataRow("(1)")]
     [DataRow("((1))")]
-    [DataRow("(((1)))")]
+    [DataRow("(AB1)")]
+    [DataRow("((AB1))")]
+    [DataRow("(1.01)")]
+    [DataRow("(1e10)")]
     public void FormulaConstructor_TestBalancedParanthesis_Valid(string formula)
     {
         _ = new Formula(formula);
@@ -267,6 +333,8 @@ public class FormulaSyntaxTests
     [DataRow("0")]
     [DataRow("AB1")]
     [DataRow("(1)")]
+    [DataRow("1.01")]
+    [DataRow("1e10")]
     public void FormulaConstructor_TestFirstToken_Valid(string formula)
     {
         _ = new Formula(formula);
@@ -334,9 +402,9 @@ public class FormulaSyntaxTests
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
     [TestMethod]
-    // [DataRow("(1)")] Redundant Test
     [DataRow("(AB1)")]
     [DataRow("((1))")]
+    [DataRow("((AB1))")]
     public void FormulaConstructor_TestParenthesesFollowingToken_Valid(string formula)
     {
         _ = new Formula(formula);
@@ -415,6 +483,10 @@ public class FormulaSyntaxTests
     [DataRow("1*1")]
     [DataRow("1/1")]
     [DataRow("1-1")]
+    [DataRow("1 + 1")]
+    [DataRow("1 * 1")]
+    [DataRow("1 / 1")]
+    [DataRow("1 - 1")]
     [DataRow("(1)+1")]
     [DataRow("(1)-1")]
     [DataRow("(1)/1")]

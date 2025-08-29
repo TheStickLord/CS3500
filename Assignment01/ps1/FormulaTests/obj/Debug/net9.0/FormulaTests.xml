@@ -27,8 +27,7 @@
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestSingleInvalidToken_Invalid(System.String)">
             <summary>
               <para>
-                This test makes sure the right kind of exception is thrown
-                when trying to create a formula with no invalid tokens.
+                This test makes sure an exception is thrown when any invalid single character tokens are presented.
               </para>
               <param name="token">Invalid token to be tested</param>
             </summary>
@@ -49,6 +48,17 @@
               <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestMultipleExponentialTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when valid exponential tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+              <remarks>
+                This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+              </remarks>
+            </summary>
+        </member>
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFloatTokens_Valid(System.String)">
             <summary>
               <para>
@@ -57,11 +67,25 @@
               <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestMultipleFloatTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when multiple valid float tokens are presented.
+              </para>
+              <remarks>
+                This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+              </remarks>
+              <param name="formula">Valid formula to be tested</param>
+            </summary>
+        </member>
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestOperatorsAndParenthesisTokens_Valid(System.String)">
             <summary>
               <para>
                 This test makes sure no exception is thrown when valid operator/parenthesis tokens are presented.
               </para>
+              <remarks>
+                Due to the requirements of other rules, I tried to maintan simple syntax to avoid triggering other rules while also testing for just valid operator characters.
+              </remarks>
               <param name="formula">Valid formula to be tested</param>
             </summary>
         </member>
@@ -76,18 +100,29 @@
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestVariableTokens_Invalid(System.String)">
             <summary>
               <para>
-                This test makes sure no exception is thrown when invalid variable tokens are presented.
+                This test makes sure an exception is thrown when invalid variable tokens are presented.
               </para>
-              <param name="formula">Valid formula to be tested</param>
+              <param name="formula">Invalid formula to be tested</param>
             </summary>
         </member>
-        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestGreaterClosingAmount_Invalid(System.String)">
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestMultipleVariableTokens_Valid(System.String)">
+            <summary>
+              <para>
+                This test makes sure no exception is thrown when mulitple valid variable tokens are presented.
+              </para>
+              <param name="formula">Valid formula to be tested</param>
+              <remarks>
+                This test is primarly for checking character validity in DLL Formula 3, as individual tokens are not accepted in the constructor.
+              </remarks>
+            </summary>
+        </member>
+        <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestGreaterClosingParanthesisAmount_Invalid(System.String)">
             <summary>
               <para>
                 This test makes sure an exception is thrown when there are more closing paranthesis than opening paranthesis.
               </para>
               <remarks>
-                I have tried to keep the formulas as syntatically correct as possible
+                I have tried to keep the formulas as syntatically correct as possible.
               </remarks>
               <param name="formula">Inavlid formula to be tested</param>
             </summary>
@@ -111,7 +146,7 @@
         <member name="M:CS3500.FormulaTests.FormulaSyntaxTests.FormulaConstructor_TestFirstToken_Valid(System.String)">
             <summary>
               <para>
-                Makes sure that a formula with a valid first token passes the constructor
+                Makes sure that a formula with a valid first token passes the constructor.
               </para>
               <param name="formula">Valid formula to be tested</param>
             </summary>
