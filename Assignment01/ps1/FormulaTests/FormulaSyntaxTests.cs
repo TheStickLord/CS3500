@@ -206,7 +206,7 @@ public class FormulaSyntaxTests
     ///     This test makes sure an exception is thrown when there are more closing paranthesis than opening paranthesis.
     ///   </para>
     ///   <remarks>
-    ///     I have tried to keep the formulas as syntatically correct as possible
+    ///     I have tried to keep the formulas as syntatically correct as possible.
     ///   </remarks>
     ///   <param name="formula">Inavlid formula to be tested</param>
     /// </summary>
@@ -258,7 +258,7 @@ public class FormulaSyntaxTests
 
     /// <summary>
     ///   <para>
-    ///     Makes sure that a formula with a valid first token passes the constructor
+    ///     Makes sure that a formula with a valid first token passes the constructor.
     ///   </para>
     ///   <param name="formula">Valid formula to be tested</param>
     /// </summary>
@@ -443,5 +443,4 @@ public class FormulaSyntaxTests
         Assert.ThrowsExactly<FormulaFormatException>(
             () => _ = new Formula(formula));
     }
-
 }
